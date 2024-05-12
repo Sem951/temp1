@@ -7,15 +7,15 @@ morph = pymorphy3.MorphAnalyzer(lang='uk')
 
 
 def read_dialects(file):
-    dialects = []
-    meanings = []
+    dialects_dict = []
+    meanings_dict = []
     with open(file, 'r', encoding='utf-8') as file:
         for line in file:
             if ':' in line:
                 dialect, meaning = line.strip().split(':', 1)
-                dialects.append(dialect.strip())
-                meanings.append(meaning.strip())
-    return dialects, meanings
+                dialects_dict.append(dialect.strip())
+                meanings_dict.append(meaning.strip())
+    return dialects_dict, meanings_dict
 
 
 def to_infinitive(word):
@@ -23,7 +23,7 @@ def to_infinitive(word):
     return parsed_word.normal_form
 
 
-def find_dialects(text, dialects, meanings):
+def find_dialects(text, dialects1, meanings1):
     found_dialects = set()
     not_recognized = set()
     for word in text.split():
@@ -33,14 +33,14 @@ def find_dialects(text, dialects, meanings):
             recognized = False
             for variant in parsed_word:
                 normal_form = variant.normal_form
-                if normal_form in dialects:
-                    index = dialects.index(normal_form)
-                    found_dialects.add((normal_form, meanings[index]))
+                if normal_form in dialects1:
+                    i = dialects1.index(normal_form)
+                    found_dialects.add((normal_form, meanings1[i]))
                     recognized = True
                 for form in variant.lexeme:
-                    if form in dialects:
-                        index = dialects.index(form)
-                        found_dialects.add((form, meanings[index]))
+                    if form in dialects1:
+                        i = dialects1.index(form)
+                        found_dialects.add((form, meanings1[i]))
                         recognized = True
             if not recognized:
                 not_recognized.add(word)

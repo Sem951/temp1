@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ukr-dialects"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["Semy P <121576553+Sem951@users.noreply.github.com>"]
 #readme = "README.md"
