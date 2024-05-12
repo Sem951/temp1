@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ukr-dialects"
-version = "0.1.2"
+version = "0.1.2a"
 description = ""
 authors = ["Semy P <121576553+Sem951@users.noreply.github.com>"]
 #readme = "README.md"
@@ -11,6 +11,9 @@ flask = "^3.0.3"
 pymorphy3 = "^2.0.1"
 pymorphy3-dicts-uk = "^2.4.1.1.1663094765"
 
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.0.0"
 
 [build-system]
 requires = ["poetry-core"]
